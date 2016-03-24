@@ -31,7 +31,7 @@
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -42,7 +42,18 @@
         <div id="navbar" class="navbar-collapse collapse">
           <form class="navbar-form navbar-right" action="/login" method="post">
             <div class="form-group">
-              
+              <input type="text" placeholder="Email" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="password" placeholder="Password" class="form-control">
+            </div>  
+            <!-- Old button style
+            <button type="submit" class="btn btn-success">Sign in</button>
+            <button type="submit" class="btn">Register</button>
+            -->
+            <input type="submit" class="btn btn-success" value="Sign in" />
+            <!-- Will need logic to hide after login -->
+            <p class="btn btn-default"><a href="/register.html">Register</a></p>
           </form>
         </div><!--/.navbar-collapse -->
       </div>
@@ -61,31 +72,20 @@
     <div class="container">
       <!-- Example row of columns -->
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <h1>First Name: </h1>
                 <input type="text" placeholder="First Name" class="form-control">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
-            <h1>Last Name: </h1>
-            <input type="text" placeholder="Last Name" class="form-control">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
+                
+                <h1>Last Name: </h1>
+                <input type="text" placeholder="Last Name" class="form-control">
+                
                 <h1>Email address: </h1>
-              <input type="text" placeholder="Email" class="form-control">
+                <input type="text" placeholder="Email" class="form-control">
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <h1>Password: </h1>
                 <input type="text" placeholder="Password" class="form-control">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
+            
                 <h1>Birthday:  </h1>
                 <select name="DOBMonth">
                     <option> - Month - </option>
@@ -212,11 +212,7 @@
                     <option value="1947">1947</option>
 
                 </select>
-            </div>
-            
-        </div>
-        <div class="row">
-            <div class="col-md-4">
+
                 <h1>Gender: </h1>
                 <form>
                   <input type="radio" name="gender" value="male" checked> Male<br>
@@ -240,7 +236,7 @@
       <hr>
 
       <footer>
-        <p>&copy; 2016 </p>
+        <p>&copy; Jon Calvert and Tom Carrio 2016 </p>
       </footer>
     </div> <!-- /container -->
   </body>
