@@ -29,7 +29,9 @@ return array;
 names = shuffle(names);
 
 //Create IDs for each element of the array to be called by
-document.getElementById("name1").innerHTML = names[0];
-document.getElementById("name2").innerHTML = names[1];
-document.getElementById("name3").innerHTML = names[2];
-document.getElementById("name4").innerHTML = names[3];
+document.getElementById("name1").innerHTML = names.pop();
+document.getElementById("name2").innerHTML = names.pop();
+document.getElementById("name3").innerHTML = names.pop();
+document.getElementById("name4").innerHTML = names.pop();
+
+//Popping conserves space as the elements are removed 
