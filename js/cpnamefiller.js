@@ -4,10 +4,10 @@ var footerText =
       '<div class="container">'+
           '<div class="row">'+
             '<div class="col-md-2 col-sm-3 col-xs-6">'+
-                '<a class="navbar-brand" href="/web/contacts.html">Contacts</a>'+
+                '<a class="navbar-brand" href="/contacts.html">Contacts</a>'+
             '</div>'+
             '<div class="col-md-6 col-sm-3 col-xs-6">'+
-                '<a class="navbar-brand" href="/web/aboutus.html">About Us</a>'+
+                '<a class="navbar-brand" href="/aboutus.html">About Us</a>'+
             '</div>';
 //footerText+=
 //    '<div class="col-md-4 col-sm-6 col-xs-12">'+
