@@ -7,26 +7,17 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>NSSN Contacts</title>
 
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    
-    <!--Scripts from index for nav bar-->
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link href="/css/bootstrap.css" rel="stylesheet">
+
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <!-- Latest compiled JavaScript -->
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <!-- Latest compiled JavaScript http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js -->
+    <script src="/js/bootstrap.min.js"></script>
       
     <!-- Custom styles for this template -->
-    <link href="css/jumbotron.css" rel="stylesheet">
+    <link href="/css/jumbotron.css" rel="stylesheet">
+    <link href="/css/register.css" rel="stylesheet">
       
   </head>
     
@@ -41,7 +32,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/index.html">NSSNetwork</a>
+          <a class="navbar-brand" href="/web/index.html">NSSNetwork</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <form class="navbar-form navbar-right" action="/login" method="post">
@@ -57,7 +48,7 @@
             -->
             <input type="submit" class="btn btn-success" value="Sign in" />
             <!-- Will need logic to hide after login -->
-            <p class="btn btn-default"><a href="/register.html">Register</a></p>
+            <p class="btn btn-default"><a href="/web/register.html">Register</a></p>
           </form>
         </div><!--/.navbar-collapse -->
       </div>
@@ -71,45 +62,38 @@
         </div>
 	</div>
     <div class="container">
-        <div class="col-md-3">
-            <p><b>Tom Carrio:</b> tom@carrio.me</p>
-            <img src="/img/avatars/tom.jpg" class="img-rounded img-responsive center-block">
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Tom Carrio:</h3><p>tom@carrio.me</p>
+                <img src="/img/avatars/tom.jpg" class="img-rounded img-responsive">
+            </div>
+            <div class="col-md-6">
+                <h3>Michael Atang:</h3><p>maatang@oakland.edu</p>
+                <img src="/img/avatars/michael.png" class="img-rounded img-responsive">
+            </div>
         </div>
-        <div class="col-md-3">
-            <p><b>Michael Atang:</b> maatang@oakland.edu</p>
-            <img src="/img/avatars/michael.png" class="img-rounded img-responsive center-block">
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Jon Calvert:</h3><p>jccalver@oakland.edu</p>
+                <img src="/img/avatars/Jon.png" class="img-rounded img-responsive">
+            </div>
+            <div class="col-md-6">
+                <h3>Wesley Austin:</h3><p>wjaustin@oakland.edu</p>
+                <img src="https://thebenclark.files.wordpress.com/2014/03/facebook-default-no-profile-pic.jpg" class="img-rounded img-responsive">
+            </div>
         </div>
-        <div class="col-md-3">
-            <p><b>Jon Calvert:</b> jccalver@oakland.edu</p>
-            <img src="https://thebenclark.files.wordpress.com/2014/03/facebook-default-no-profile-pic.jpg" class="img-rounded img-responsive center-block">
-        </div>
-        <div class="col-md-3">
-            <p><b>Wesley Austin:</b> wjaustin@oakland.edu</p>
-            <img src="https://thebenclark.files.wordpress.com/2014/03/facebook-default-no-profile-pic.jpg" class="img-rounded img-responsive center-block">
-        </div>
-        <br/>
       </div>
 
-      <div class="container">
-      <hr>
-      <footer>
-        <div class="col-md-3">
-            <p>&copy; 2016 Jon Calvert and Tom Carrio</p>
-        </div>
-        <div class="col-md-3">
-        </div>
-        <div class="col-md-3">
-        </div>
-        <div class="col-md-3">
-        </div>
         
-      </footer>
-    </div> <!-- /container -->
-      
+    <!-- Footer is included using javascript replacement function
+        Simply include your name if you've worked on this page and it will add to 
+        The footer nav bar-->
+      <div id="footer">Jon Calvert and Tom Carrio</div>
+      <script src="/js/cpnamefiller.js"></script>
       
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
   </body>
 </html>

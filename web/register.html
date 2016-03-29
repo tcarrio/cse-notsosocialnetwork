@@ -11,18 +11,17 @@
 
     <title>NSSN Register</title>
 
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link href="/css/bootstrap.css" rel="stylesheet">
 
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 
-    <!-- Latest compiled JavaScript -->
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <!-- Latest compiled JavaScript http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js -->
+    <script src="/js/bootstrap.min.js"></script>
       
     <!-- Custom styles for this template -->
-    <link href="css/jumbotron.css" rel="stylesheet">
-    <link href="css/register.css" rel="stylesheet">
+    <link href="/css/jumbotron.css" rel="stylesheet">
+    <link href="/css/register.css" rel="stylesheet">
     
     </head>
 
@@ -37,7 +36,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/index.html">NSSNetwork</a>
+          <a class="navbar-brand" href="/web/index.html">NSSNetwork</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <form class="navbar-form navbar-right" action="/login" method="post">
@@ -53,7 +52,7 @@
             -->
             <input type="submit" class="btn btn-success" value="Sign in" />
             <!-- Will need logic to hide after login -->
-            <p class="btn btn-default"><a href="/register.html">Register</a></p>
+            <p class="btn btn-default"><a href="/web/register.html">Register</a></p>
           </form>
         </div><!--/.navbar-collapse -->
       </div>
@@ -233,21 +232,11 @@
             </div>
         </div>
     </div>
-
-    <div class="container">
-      <hr>
-      <footer>
-        <div class="col-md-3">
-            <p>&copy; Jon Calvert and Tom Carrio 2016 </p>
-        </div>
-        <div class="col-md-3">
-        </div>
-        <div class="col-md-3">
-        </div>
-        <div class="col-md-3">
-        </div>
-        
-      </footer>
-    </div> <!-- /container -->
+      
+    <!-- Footer is included using javascript replacement function
+        Simply include your name if you've worked on this page and it will add to 
+        The footer nav bar-->
+      <div id="footer">Jon Calvert and Tom Carrio</div>
+      <script src="/js/cpnamefiller.js"></script>
   </body>
 </html>
