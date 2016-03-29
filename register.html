@@ -11,18 +11,17 @@
 
     <title>NSSN Register</title>
 
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link href="/css/bootstrap.css" rel="stylesheet">
 
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 
-    <!-- Latest compiled JavaScript -->
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <!-- Latest compiled JavaScript http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js -->
+    <script src="/js/bootstrap.min.js"></script>
       
     <!-- Custom styles for this template -->
-    <link href="css/jumbotron.css" rel="stylesheet">
-    <link href="css/register.css" rel="stylesheet">
+    <link href="/css/jumbotron.css" rel="stylesheet">
+    <link href="/css/register.css" rel="stylesheet">
     
     </head>
 
@@ -60,7 +59,8 @@
     </nav>
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
+    <div class="bg"></div>
+    <div class="jumbotron img-header">
       <div class="container">
         <h1>Register!</h1>
           <p>Registering for Not-So-Social-Network is not-so-expensive.
@@ -84,7 +84,7 @@
             </div>
             <div class="col-md-6">
                 <h1>Password: </h1>
-                <input type="text" placeholder="Password" class="form-control">
+                <input type="password" placeholder="Password" class="form-control">
                 
                 <div>
                 <h1>Birthday:  </h1>
@@ -218,7 +218,6 @@
                 <form>
                   <label class="radio-inline"><input type="radio" name="gender" value="male" checked> Male</label>
                   <label class="radio-inline"><input type="radio" name="gender" value="female"> Female </label>
-                  <label class="radio-inline"><input type="radio" name="gender" value="other"> Other  </label>
                 </form> 
             </div>
         </div>
@@ -229,25 +228,33 @@
         <div class="row">
             <div class="col-md-4">
                 <input type="submit" class="btn btn-success" value="Submit" />
-                <input type="submit" class="btn btn-success" value="Cancel" />
+                <a class="btn btn-default" href="/index.html" role="button">Cancel &raquo;</a>
+                
+                <script language="JavaScript">
+                  window.onbeforeunload = confirmExit;
+                  function confirmExit()
+                  {
+                    return "Do you wish to cancel your registration for the Not-So-Social-Network and leave this page?";
+                  }
+                </script>
             </div>
         </div>
     </div>
-
-    <div class="container">
-      <hr>
-      <footer>
-        <div class="col-md-3">
-            <p>&copy; Jon Calvert and Tom Carrio 2016 </p>
-        </div>
-        <div class="col-md-3">
-        </div>
-        <div class="col-md-3">
-        </div>
-        <div class="col-md-3">
-        </div>
-        
-      </footer>
-    </div> <!-- /container -->
+      
+      <nav class="navbar navbar-inverse navbar-fixed-bottom">
+          <div class="container">
+              <div class="row">
+                <div class="col-md-2 col-sm-3 col-xs-6">
+                    <a class="navbar-brand" href="/contacts.html">Contacts</a>
+                </div>
+                <div class="col-md-6 col-sm-3 col-xs-6">
+                    <a class="navbar-brand" href="/aboutus.html">About Us</a>
+                </div>
+            </div>
+          </div>
+      </nav>
+      
+            <script src="/js/parallax.js"></script>
+      
   </body>
 </html>
