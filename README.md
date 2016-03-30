@@ -1,9 +1,13 @@
 # cse-notsosocialnetwork
 Project for CSE-337
 
-The working branch at the moment will be `gh-pages` until we have finished the template portion.
+If you are going to work on this project, the `master` now contains the running code for website. Please `branch` off of master and do your work there, and submit a pull request for your work so there can be some peer review to discern any issues that may exist in the new code. I'll be adding more description for folder structure and design scheme on the Python side of this project. Work needs to be completed on the following:
 
-**The webpages are accessable now at http://nssn.carrio.me**
+* SQL Database (*MariaDB*)
+* Bottle/Python backend
+* Profile / Homepage for Users
+
+**The `gh-pages` webpage branch is accessable now at http://nssn.carrio.me**
 
 Go ahead and clone the repo, checkout the branch, and start working on something other than the `index.html` landing page. 
 
