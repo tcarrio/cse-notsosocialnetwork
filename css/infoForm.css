@@ -1,0 +1,17 @@
+.infoForm {
+    background-color:gray;
+    background-position: 500px 200px;
+    display: block;
+    position:relative;
+    text-decoration: none;
+    white-space: nowrap;
+    color: #000;
+    float: left;
+    width: 500px;
+    height: 500px;
+    border:1px solid #000;
+    border-radius: 25px;
+}
+
+
+
