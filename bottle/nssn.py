@@ -1,6 +1,6 @@
 import bottle
 import bottle_session
-from bottle import route, run
+from bottle import route, run, view
 from bottle import get, post, request
 from bottle import static_file
 from bottle import redirect
@@ -60,19 +60,19 @@ def index():
 
 @app.route('/index.html')
 def index():
-    return static_file('index.html', root=root_folder+'/templates')
+    return static_file('index.html', root=root_folder+'/web')
 
 @app.route('/contacts.html')
 def index():
-    return static_file('contacts.html', root=root_folder+'/templates')
+    return static_file('contacts.html', root=root_folder+'/web')
 
 @app.route('/register.html')
 def index():
-    return static_file('register.html', root=root_folder+'/templates')
+    return static_file('register.html', root=root_folder+'/web')
 
 @app.route('/aboutus.html')
 def index():
-    return static_file('aboutus.html', root=root_folder+'/templates')
+    return static_file('aboutus.html', root=root_folder+'/web')
 
 @app.post('/register')
 def register_user(): 
@@ -86,7 +86,7 @@ def register_user():
     gender = request.forms.get("gender")
     
     if not(fname and lname and email and password and dobm and dobd and doby and gender):
-        return static_file('register.html',root=root_folder+'/templates')
+        return static_file('register.html',root=root_folder+'/web')
     
     bGender = bool(gender=="male")
     dob = datetime.datetime.strptime("{}/{}/{}".format(dobd,dobm,doby), "%d/%m/%Y")
@@ -100,6 +100,7 @@ def register_user():
     redirect('/index.html')
     
 @app.post('/login')
+@view('index')
 def login_user():
     # get parameters from POST
     # process login info against db
@@ -111,16 +112,16 @@ def login_user():
 
     print(email)
     print(password)
-    if email and password:
+    if email and password and result:
         hash = hashlib.sha512(password.encode('utf-8')).hexdigest()[:64]
         
         if result.user_email == email:
             if result.user_password == hash:
                 redirect('/contacts.html')
-        else:
-            redirect('/index.html')
-    
-    return static_file('index.html', root=root_folder+'/templates')
+    #redirect('/index.html')
+    return {'status':'bad_login'}
+
+    #return static_file('index.html', root=root_folder+'/web')
     
 # ASSET RETRIEVAL PATHS
 @app.route('/js/<filename:path>')
