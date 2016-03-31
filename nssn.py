@@ -25,6 +25,10 @@ def index():
 def index():
     return static_file('aboutus.html', root=root_folder+'/templates')
 
+@post('/register')
+def register_user():
+    
+    
 #@route('/login')
 #def login():
 #    # get parameters from POST
