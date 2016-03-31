@@ -70,38 +70,38 @@
     </div>
 
     <div class="container">
-      <!-- Example row of columns -->
+        <form action="/register" method="post">
         <div class="row">
             <div class="col-md-6">
                 <h1>First Name: </h1>
-                <input type="text" placeholder="First Name" class="form-control">
+                <input type="text" placeholder="First Name" class="form-control" name="FName">
                 
                 <h1>Last Name: </h1>
-                <input type="text" placeholder="Last Name" class="form-control">
+                <input type="text" placeholder="Last Name" class="form-control" name="LName">
                 
                 <h1>Email address: </h1>
-                <input type="text" placeholder="Email" class="form-control">
+                <input type="text" placeholder="Email" class="form-control" name="Email">
             </div>
             <div class="col-md-6">
                 <h1>Password: </h1>
-                <input type="password" placeholder="Password" class="form-control">
+                <input type="password" placeholder="Password" class="form-control" name="Password">
                 
                 <div>
                 <h1>Birthday:  </h1>
                 <select class="btn btn-default" name="DOBMonth">
                     <option> - Month - </option>
-                    <option value="January">January</option>
-                    <option value="Febuary">Febuary</option>
-                    <option value="March">March</option>
-                    <option value="April">April</option>
-                    <option value="May">May</option>
-                    <option value="June">June</option>
-                    <option value="July">July</option>
-                    <option value="August">August</option>
-                    <option value="September">September</option>
-                    <option value="October">October</option>
-                    <option value="November">November</option>
-                    <option value="December">December</option>
+                    <option value="1">January</option>
+                    <option value="2">Febuary</option>
+                    <option value="3">March</option>
+                    <option value="4">April</option>
+                    <option value="5">May</option>
+                    <option value="6">June</option>
+                    <option value="7">July</option>
+                    <option value="8">August</option>
+                    <option value="9">September</option>
+                    <option value="10">October</option>
+                    <option value="11">November</option>
+                    <option value="12">December</option>
                 </select>
 
                 <select class="btn btn-default" name="DOBDay">
@@ -215,10 +215,8 @@
                 </div>
 
                 <h1>Gender: </h1>
-                <form>
                   <label class="radio-inline"><input type="radio" name="gender" value="male" checked> Male</label>
                   <label class="radio-inline"><input type="radio" name="gender" value="female"> Female </label>
-                </form> 
             </div>
         </div>
         
@@ -239,6 +237,7 @@
                 </script>
             </div>
         </div>
+        </form>
     </div>
       
       <nav class="navbar navbar-inverse navbar-fixed-bottom">
