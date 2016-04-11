@@ -44,6 +44,10 @@ def registration():
 @app.route('/aboutus')
 def aboutus():
     return render_template('aboutus.html')
+
+@app.route('/profile')
+def profile():
+    return render_template('profile.html')
     
 @app.route('/login', methods=['POST'])
 def login():
