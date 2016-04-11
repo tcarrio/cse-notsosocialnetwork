@@ -1,50 +1,108 @@
-from bottle import route, run
-from bottle import static_file
-from bottle import redirect
+from flask import Flask,render_template,redirect,url_for,request
+from flask_login import LoginManager
+from model.user import User
+from model.security import Hasher
+from model.datetool import DateHelper
+from sqlalchemy import *
+#from flask import json,jsonify
 
-root_folder = '/home/tom/nssn'
+app = Flask(__name__, static_url_path='/static')
+app.config.from_object('config.env_config.DevelopmentConfig')
+lm = LoginManager()
+lm.init_app(app)
 
-# main redirect
-@route('/')
-def index():
-    redirect('/index.html')
+db = create_engine(app.config['DATABASE_URI'])
 
-@route('/index.html')
-def index():
-    return static_file('index.html', root=root_folder+'/templates')
+user = User() # unauth user
+dateFrm = DateHelper() # ;)
+hshr = Hasher()
 
-@route('/contacts.html')
-def index():
-    return static_file('contacts.html', root=root_folder+'/templates')
-
-@route('/register.html')
-def index():
-    return static_file('register.html', root=root_folder+'/templates')
-
-@route('/aboutus.html')
-def index():
-    return static_file('aboutus.html', root=root_folder+'/templates')
-
-#@route('/login')
-#def login():
-#    # get parameters from POST
-#    # process login info against db
-#    return static_file('index.html', root=root_folder+'/templates')
+@app.route('/')
+def root_page():
+#    if(user.is_authenticated):
+#        return redirect(url_for('home'))
+#    else:
+    return redirect(url_for('frontpage'))
     
-# ASSET RETRIEVAL PATHS
-@route('/js/<filename:path>')
-def get_js(filename):
-    return static_file(filename, root=root_folder+'/js')
-@route('/css/<filename:path>')
-def get_css(filename):
-    return static_file(filename, root=root_folder+'/css')
-@route('/img/avatars/<filename:path>')
-def get_avatar(filename):
-    return static_file(filename, root=root_folder+'/img/avatars')
-@route('/img/background/<filename:path>')
-def get_bg(filename):
-    return static_file(filename, root=root_folder+'/img/background')
-##
+@app.route('/frontpage')
+def frontpage():
+    return render_template('index.html')
 
+@app.route('/home')
+def home():
+    print('home was accessed')
+    return render_template('profile.html')
 
-run(host='localhost',port=8080)
+@app.route('/contacts')
+def contacts():
+    return render_template('contacts.html')
+
+@app.route('/registration')
+def registration():
+    return render_template('register.html')
+
+@app.route('/aboutus')
+def aboutus():
+    return render_template('aboutus.html')
+    
+@app.route('/login', methods=['POST'])
+def login():
+    email = request.form['Email']
+    password = request.form['Password']
+    
+    session = create_session()
+    result = session.query(User).filter(User.user_email==email).first()
+    if email and password:
+        hash = hashlib.sha512(password.encode('utf-8')).hexdigest()[:64]
+        
+        if result.user_email == email:
+            if result.user_password == hash:
+                return redirect(url_for('home'))
+        else:
+            return redirect('/index.html')
+    
+    return redirect(url_for('frontpage'))
+    
+@app.route('/register', methods=['POST'])
+def register(): 
+    print('Entered register')
+    fname = request.form['FName']
+    lname = request.form['LName']
+    email = request.form['Email']
+    password = request.form['Password']
+    dobm = request.form['DOBMonth']
+    dobd = request.form['DOBDay']
+    doby = request.form['DOBYear']
+    gender = request.form['gender']
+    print('Parsed form')
+    
+    if not(fname and lname and email and password and dobm and dobd and doby and gender):
+        app.flash('Not all required information was received. Please try again')
+        return redirect(url_for('registration'))
+    
+    bGender = bool(gender=="male")
+    print('About to format date')
+    dob = dateFrm.get_db_date(dobd,dobm,doby)
+    print('About to hash password')
+    hashedP = hshr.get_hash(password)
+    print('Creating user')
+    new_user = User(fname,lname,email,hashedP,dob,bGender)
+    
+#    session=create_session()
+#    session.add(new_user)
+#    session.commit()
+    
+    print('About to flash')
+    app.flash('You have successfully registered!')
+    return redirect(url_for('home'))
+    
+@app.route('/logout')
+#@login_required
+def logout():
+    logout_user()
+    
+    
+    
+    
+if __name__=="__main__":
+    app.run()
