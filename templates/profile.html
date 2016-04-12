@@ -43,13 +43,18 @@
             <li role="presentation" class="active"><a href="/profile">Profile</a></li>
             <li role="presentation"><a href="/message.html">Messages </a></li>
 
-            <form class="navbar-form navbar-right" method="post">              
+                
+                
+            <form class="navbar-form navbar-right" method="get">              
                 <div class="form-group">
                   <input type="text" placeholder="NSSN" class="form-control">
                 </div>
-                <input type="submit" class="btn btn-primary" href="/search.html" value="Search" />
+                <input type="submit" class="btn btn-primary" href="/search" value="Search" />
 
-              </form>
+                </form>
+                
+                <a href="/logout"><p class="btn btn-danger">Logout</p></a>
+                
           </ul>
         </div><!--/.navbar-collapse -->
       </div>
