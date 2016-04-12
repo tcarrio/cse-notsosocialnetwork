@@ -31,7 +31,7 @@ def frontpage():
 @app.route('/home')
 def home():
     print('home was accessed')
-    return render_template('profile.html')
+    return render_template('home.html')
 
 @app.route('/contacts')
 def contacts():
