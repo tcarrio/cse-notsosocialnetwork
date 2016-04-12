@@ -24,13 +24,14 @@ main(){
         ln -s /opt/$REPO_NAME /www
     fi
 
-    cd /opt/$REPO_NAME
+    cd /www
     #$PIP install virtualenv
     #virtualenv --no-site-packages venv
     #source venv/bin/activate
     $PIP install flask sqlalchemy pymysql
 
     #SETUP DATABASE
+    chmod +x /www/srv/*
     /www/srv/setup_db.sh
 
     if [ $TESTING==1 ]

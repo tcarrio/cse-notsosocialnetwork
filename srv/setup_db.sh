@@ -17,7 +17,7 @@ setupDB(){
         local MYSQL="$MYSQL_PATH"
     fi
 
-    echo "Executing database setup script\n"
+    echo "Executing database setup script"
     $MYSQL -u $DBUSER "-p$DBPASS" -e "CREATE DATABASE IF NOT EXISTS $DBNAME"
     $MYSQL -u $DBUSER "-p$DBPASS" -e "CREATE USER 'nssnuser'@'%' IDENTIFIED BY 'nssnpass';"
     $MYSQL -u $DBUSER "-p$DBPASS" -e "GRANT ALL PRIVILEGES ON *.* TO 'nssnuser'@'%'"
