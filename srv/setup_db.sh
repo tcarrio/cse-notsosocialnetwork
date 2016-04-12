@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 setupDB(){
+    local DBUSER="$(cat db.conf | cut -d ' ' -f 1)"
+    local DBPASS="$(cat db.conf | cut -d ' ' -f 2)"
     local SCRIPT_PATH="/www/srv/setup_db.sql"
     local MYSQL="mysql"
     local DBNAME="nssndb"
