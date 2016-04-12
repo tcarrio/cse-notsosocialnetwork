@@ -65,7 +65,6 @@ def login():
     
 @app.route('/register', methods=['POST'])
 def register(): 
-    print('Entered register')
     fname = request.form['FName']
     lname = request.form['LName']
     email = request.form['Email']
@@ -74,22 +73,15 @@ def register():
     dobd = request.form['DOBDay']
     doby = request.form['DOBYear']
     gender = request.form['gender']
-    print('Parsed form')
     
     if not(fname and lname and email and password and dobm and dobd and doby and gender):
-        app.flash('Not all required information was received. Please try again')
         return redirect(url_for('registration'))
     
     bGender = bool(gender=="male")
-    print('About to format date')
-    print('D:{}\tM:{}\tY:{}'.format(dobd,dobm,doby))
     dob = datetime.datetime.strptime("{}/{}/{}".format(dobd,dobm,doby), "%d/%m/%Y")
-    print('About to hash password')
     hashedP = hashlib.sha512(password.encode('utf-8')).hexdigest()[:64]
-    print('Creating user')
     new_account = Account(fname,lname,email,hashedP,dob,bGender)
-    print('Created user')
-    
+        
     try:
         db_session.add(new_account)
         db_session.commit()
@@ -97,8 +89,6 @@ def register():
         return redirect(url_for('registration'))
         
     
-    print('About to flash')
-    app.flash('You have successfully registered!')
     return redirect(url_for('home'))
     
 @app.route('/logout')
