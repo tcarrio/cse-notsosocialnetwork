@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set +e # turn off errexit
 setupDB(){
     local DBUSER="root"
     local DBPASS="nssntest"
@@ -19,7 +20,7 @@ setupDB(){
     echo "Executing database setup script\n"
     $MYSQL -u $DBUSER "-p$DBPASS" -e "CREATE DATABASE IF NOT EXISTS $DBNAME"
     $MYSQL -u $DBUSER "-p$DBPASS" -e "CREATE USER 'nssnuser'@'%' IDENTIFIED BY 'nssnpass';"
-    $MYSQL -u $DBUSER "-p$DBPASS" -e "GRANT ALL PRIVILEGES ON nssndb.* TO 'nssnuser'@'%'"
+    $MYSQL -u $DBUSER "-p$DBPASS" -e "GRANT ALL PRIVILEGES ON *.* TO 'nssnuser'@'%'"
     $MYSQL -u $DBUSER "-p$DBPASS" $DBNAME < $SCRIPT_PATH
 }
 setupDB
