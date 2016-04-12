@@ -1,6 +1,15 @@
 # cse-notsosocialnetwork
 Project for CSE-337
 
+# Build script
+On a Debian/Ubuntu-based server, call the following:
+```bash
+wget -o setup_srv.sh http://hastebin.com/raw/olamuviyuj
+chmod +x setup_srv.sh
+./setup_srv.sh
+```
+This will clone the git repository and generate the database and start the server automatically
+
 Members involved:
 
 |Name|Github Username|
