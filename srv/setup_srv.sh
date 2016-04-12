@@ -28,7 +28,7 @@ main(){
     #$PIP install virtualenv
     #virtualenv --no-site-packages venv
     #source venv/bin/activate
-    $PIP install flask flask-login sqlalchemy pymysql
+    $PIP install flask sqlalchemy pymysql
 
     #SETUP DATABASE
     /www/srv/setup_db.sh
