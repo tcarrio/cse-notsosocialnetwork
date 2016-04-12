@@ -12,40 +12,50 @@ app.config.from_object('config.env_config.ProductionConfig')
 
 db = create_engine(app.config['DATABASE_URI'])
 
-@app.route('/')
+@app.route('/',methods=['GET'])
 def root_page():
     if 'user' in session:
         return redirect(url_for('home'))
     else:
         return redirect(url_for('frontpage'))
     
-@app.route('/frontpage')
+@app.route('/frontpage',methods=['GET'])
 def frontpage():
+    if 'user' in session:
+        return redirect(url_for('home'))
     return render_template('index.html')
 
-@app.route('/home')
+@app.route('/home',methods=['GET'])
 def home():
+    if 'user' not in session:
+        return redirect(url_for('frontpage'))
     print('home was accessed')
     return render_template('home.html')
 
-@app.route('/contacts')
+@app.route('/contacts',methods=['GET'])
 def contacts():
     return render_template('contacts.html')
 
-@app.route('/registration')
+@app.route('/registration',methods=['GET'])
 def registration():
+    if 'user' in session:
+        return redirect(url_for('home'))
     return render_template('register.html')
 
-@app.route('/aboutus')
+@app.route('/aboutus',methods=['GET'])
 def aboutus():
     return render_template('aboutus.html')
 
-@app.route('/profile')
+@app.route('/profile', methods=['GET'])
 def profile():
+    if 'user' not in session:
+        return redirect(url_for('register'))
     return render_template('profile.html')
     
 @app.route('/login', methods=['POST'])
 def login():
+    if 'user' in session:
+        return redirect(url_for('home'))
     email = request.form['Email']
     password = request.form['Password']
 
@@ -64,6 +74,8 @@ def login():
     
 @app.route('/register', methods=['POST'])
 def register(): 
+    if 'user' in session:
+        return redirect(url_for('home'))
     fname = request.form['FName']
     lname = request.form['LName']
     email = request.form['Email']
@@ -85,6 +97,7 @@ def register():
         db_session.add(new_account)
         db_session.commit()
     except IntegrityError:
+        # entry exists, fail back to registration
         return redirect(url_for('registration'))
         
     session['user'] = email
