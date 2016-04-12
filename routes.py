@@ -134,6 +134,7 @@ def post():
             db_session.add(new_post)
             db_session.commit()
         except IntegrityError:
+            print('Error inserting to database')
             pass
     return redirect(url_for('root_page'))
     
