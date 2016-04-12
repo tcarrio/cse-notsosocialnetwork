@@ -137,24 +137,22 @@
               </div>
           </div>
       </div>
-      
-<!--      <div style="width: 1500px; margin: 0 auto;">-->
-          <div class="container">
+      <div class="container">
+        <div class="row">
+          <div class ="col-md-8 col-xs-8">
+            <div class="well panel panel-default">
+                <div class="panel-body">
                     <div class="row">
-                      <div class ="col-md-8 col-xs-8">
-                        <div class="well panel panel-default">
-                            <div class="panel-body">
-                                <div class="row">
-                                    <ul class="tabs" data-persist="true">
-                                        <a href="#Posts" class="btn-default"><li class="selected">Posts</li></a>
-                                        <a href="#About" class="btn-default"><li>About</li></a>
-                                        <a href="#Friends" class="btn-default"><li>Friends</li></a>
-                                    </ul>
-                                </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                        <ul class="tabs" data-persist="true">
+                            <a href="#Posts" class="btn-default"><li class="selected">Posts</li></a>
+                            <a href="#About" class="btn-default"><li>About</li></a>
+                            <a href="#Friends" class="btn-default"><li>Friends</li></a>
+                        </ul>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="tabcontents">
             <div id="Posts">
@@ -165,9 +163,9 @@
                         <div class="well panel panel-default">
                             <div class="panel-body">
                                 <div class="row">
-                                        <form>
+                                        <form action="/post" method="post">
                                             <div class="col-md-10 text-center">
-                                                <input type="text" placeholder="What's new?" class="form-control">
+                                                <input type="text" placeholder="What's new?" class="form-control" value="content">
                                             </div>
                                             <div class="col-md text-center">
                                                 <input type="submit" value="submit">

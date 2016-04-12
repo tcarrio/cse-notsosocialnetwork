@@ -117,6 +117,26 @@ def register():
 def search():
     print(request.args) #dict
     return
+
+### POST
+@app.route('/post',methods=['POST'])
+def post():
+    if 'user' not in session:
+        pass
+    elif escape(request.args['content']):
+        content = escape(request.args['content'])
+        stamp = datetime.datetime.now()
+        uricomp = '{}{}{}'.format(str(stamp),content,session['user'])
+        uri = hashlib.sha512(uricomp.encode('utf-8')).hexdigest()[:48]
+        new_post = Post(session['user'],)
+        new_post = Post(uri=uri,pFrom=session['user'],pTo=session['user'],pDate=stamp,pContent=content)
+        try:
+            db_session.add(new_post)
+            db_session.commit()
+        except IntegrityError:
+            pass
+    return redirect(url_for('/'))
+    
     
 ### LOGOUT
 @app.route('/logout')
