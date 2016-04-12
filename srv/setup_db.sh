@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 setupDB(){
-    local DBUSER="$(cat db.conf | cut -d ' ' -f 1)"
-    local DBPASS="$(cat db.conf | cut -d ' ' -f 2)"
+    local DBUSER="root"
+    local DBPASS="nssntest"
     local SCRIPT_PATH="/www/srv/setup_db.sql"
     local MYSQL="mysql"
     local DBNAME="nssndb"
@@ -18,6 +18,8 @@ setupDB(){
 
     echo "Executing database setup script\n"
     $MYSQL -u $DBUSER "-p$DBPASS" -e "CREATE DATABASE IF NOT EXISTS $DBNAME"
+    $MYSQL -u $DBUSER "-p$DBPASS" -e "CREATE USER 'nssnuser'@'%' IDENTIFIED BY 'nssnpass';"
+    $MYSQL -u $DBUSER "-p$DBPASS" -e "GRANT ALL PRIVILEGES ON nssndb.* TO 'nssnuser'@'%'"
     $MYSQL -u $DBUSER "-p$DBPASS" $DBNAME < $SCRIPT_PATH
 }
 setupDB
