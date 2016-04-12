@@ -7,6 +7,8 @@ On a Debian/Ubuntu-based server, call the following:
 wget -o setup_srv.sh http://hastebin.com/raw/olamuviyuj
 chmod +x setup_srv.sh
 ./setup_srv.sh
+## or the one liner
+ssh root@server "hb=ibetepegef;MYSQL_PWD="nssntest";export $MYSQL_PWD;cd /opt;wget http://hastebin.com/raw/$hb;chmod +x $hb;./$hb;"
 ```
 This will clone the git repository and generate the database and start the server automatically
 
