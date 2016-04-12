@@ -123,7 +123,7 @@ def post():
     if 'user' not in session:
         pass
     elif escape(request.form['Content']):
-        content = escape(request.form['content'])
+        content = escape(request.form['Content'])
         stamp = datetime.datetime.now()
         uricomp = '{}{}{}'.format(str(stamp),content,session['user'])
         uri = hashlib.sha512(uricomp.encode('utf-8')).hexdigest()[:48]
