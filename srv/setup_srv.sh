@@ -17,10 +17,10 @@ main(){
     then
         cd /opt
         git clone https://github.com/tcarrio/$REPO_NAME.git
-        if [ ! -f /www ]
-        then
-            ln -s /opt/$REPO_NAME /www
-        fi
+    fi
+    
+    if [ ! -f /www ]
+        ln -s /opt/$REPO_NAME /www
     fi
 
     cd /opt/$REPO_NAME

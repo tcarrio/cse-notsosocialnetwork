@@ -1,4 +1,5 @@
-import flash.ext.login as flask_login
+import flask.ext.login as flask_login
+from model.manager import login_manager
 
 class User(flask_login.UserMixin):
     pass
