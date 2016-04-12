@@ -8,6 +8,6 @@ class DevelopmentConfig(Config):
     WEB_HOST = 'localhost'
     
 class ProductionConfig(Config):
-    DATABASE_URI = 'mysql+pymysql://root:nssntest@localhost/nssndb'
+    DATABASE_URI = 'mysql+pymysql://nssnadm:nssntest@nssn.carrio.me/nssndb'
     WEB_PORT = 80
     WEB_HOST = 'nssn.carrio.me'

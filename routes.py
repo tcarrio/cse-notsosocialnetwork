@@ -6,7 +6,7 @@ from sqlalchemy import *
 #from flask import json,jsonify
 
 app = Flask(__name__, static_url_path='/static')
-app.config.from_object('config.env_config.DevelopmentConfig')
+app.config.from_object('config.env_config.ProductionConfig')
 login_manager = flask_login.LoginManager()
 login_manager.init_app(app)
 
