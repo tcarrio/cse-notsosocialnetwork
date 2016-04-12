@@ -8,15 +8,17 @@ main(){
     local PYTHON="python3"
     local PIP="pip3"
     local TESTING=1
+    local MY_IP=$(dig +short myip.opendns.com @resolver1.opendns.com)
 
     apt-get update
-    apt-get install -y mysql-server git nginx python3-pip
+    apt-get install -y mysql-server git nginx python3-pip vim
     service nginx stop
 
     if [ ! -d /opt/$REPO_NAME ]
     then
         cd /opt
         git clone https://github.com/tcarrio/$REPO_NAME.git
+        printf '\n    EXT_IP="$MY_IP"' >> $REPO_NAME/config/env_config.py
     fi
     
     if [ ! -f /www ]
