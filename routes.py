@@ -1,7 +1,4 @@
-from flask import Flask,render_template,redirect,url_for,request
-#from flask_login import LoginManager
-from model.manager import login_manager
-import flask.ext.login as flask_login
+from flask import Flask,render_template,redirect,url_for,request,session,escape
 from model.user import User
 from model.security import Hasher
 from model.datetool import DateHelper
@@ -103,12 +100,8 @@ def register():
     return redirect(url_for('home'))
     
 @app.route('/logout')
-#@login_required
 def logout():
-    logout_user()
-    
-    
-    
+    if
     
 if __name__=="__main__":
     app.run()
