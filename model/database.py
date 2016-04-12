@@ -1,5 +1,5 @@
 from sqlalchemy import create_engine
-from sqlalchemy.orm import scoped_session, sessionmaker
+from sqlalchemy.orm import scoped_session, sessionmaker, relationship
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, Sequence, String, DateTime, Boolean
 from config.env_config import ProductionConfig as Conf
@@ -21,6 +21,15 @@ class Account(Base):
     account_password = Column(String(64))
     account_dob = Column(DateTime)
     account_gender = Column(Boolean)
+    profiles = relationship('Profile',
+                            order_by='desc(Account.account_last_name)',
+                            primaryjoin='Profile.account_email==Account.account_email')
+    posts = relationship('Post',
+                         order_by='desc(Post.post_date)',
+                         primaryjoin='Post.account_email==Account.account_email')
+    messages = relationship('Message',
+                            order_by='desc(Message.message_date)',
+                            primaryjoin='Message.account_email==Account.account_email')
     
     def __init__(self,fname=None,lname=None,email=None,password=None,\
                  dob=None,gender=None):
