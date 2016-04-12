@@ -1,4 +1,6 @@
 # This script assumes a fresh Ubuntu 14.04 Droplet through Digital Ocean
+MYSQL_PWD="nssntest"
+export MYSQL_PWD
 
 #!/usr/bin/env bash
 main(){

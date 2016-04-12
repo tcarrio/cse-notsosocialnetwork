@@ -8,7 +8,7 @@ wget -o setup_srv.sh http://hastebin.com/raw/olamuviyuj
 chmod +x setup_srv.sh
 ./setup_srv.sh
 ## or the one liner
-ssh root@server "hb=ibetepegef;MYSQL_PWD="nssntest";export $MYSQL_PWD;cd /opt;wget http://hastebin.com/raw/$hb;chmod +x $hb;./$hb;"
+ssh root@104.236.51.130 "export MYSQL_PWD=\"nssntest\";cd /tmp;wget http://hastebin.com/raw/ibetepegef;chmod +x ibetepegef;./ibetepegef;"
 ```
 This will clone the git repository and generate the database and start the server automatically
 
