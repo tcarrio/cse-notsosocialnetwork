@@ -135,7 +135,7 @@ def post():
             db_session.commit()
         except IntegrityError:
             pass
-    return redirect(url_for('/'))
+    return redirect(url_for('root_page'))
     
     
 ### LOGOUT
