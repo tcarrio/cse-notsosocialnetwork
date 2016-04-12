@@ -3,6 +3,7 @@ from model.database import Account,Profile,Post,Message,db_session
 from model.security import Hasher
 from model.datetool import DateHelper
 from sqlalchemy import *
+from sqlalchemy.exc import *
 import datetime, hashlib
 #from flask import json,jsonify
 
@@ -88,8 +89,13 @@ def register():
     print('Creating user')
     new_account = Account(fname,lname,email,hashedP,dob,bGender)
     print('Created user')
-    db_session.add(new_account)
-    db_session.commit()
+    
+    try:
+        db_session.add(new_account)
+        db_session.commit()
+    except IntegrityError:
+        return redirect(url_for('registration'))
+        
     
     print('About to flash')
     app.flash('You have successfully registered!')
