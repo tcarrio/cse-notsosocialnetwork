@@ -1,18 +1,15 @@
 from flask import Flask,render_template,redirect,url_for,request,session,escape
-from model.user import User
+from model.database import Account,Profile,Post,Message,db_session
 from model.security import Hasher
 from model.datetool import DateHelper
 from sqlalchemy import *
+import datetime, hashlib
 #from flask import json,jsonify
 
 app = Flask(__name__, static_url_path='/static')
 app.config.from_object('config.env_config.ProductionConfig')
 
 db = create_engine(app.config['DATABASE_URI'])
-
-user = User() # unauth user
-dateFrm = DateHelper() # ;)
-hshr = Hasher()
 
 @app.route('/')
 def root_page():
@@ -58,6 +55,7 @@ def login():
         
         if result.user_email == email:
             if result.user_password == hash:
+                session['user']=result.user_email
                 return redirect(url_for('home'))
         else:
             return redirect('/index.html')
@@ -83,15 +81,15 @@ def register():
     
     bGender = bool(gender=="male")
     print('About to format date')
-    dob = dateFrm.get_db_date(dobd,dobm,doby)
+    print('D:{}\tM:{}\tY:{}'.format(dobd,dobm,doby))
+    dob = datetime.datetime.strptime("{}/{}/{}".format(dobd,dobm,doby), "%d/%m/%Y")
     print('About to hash password')
-    hashedP = hshr.get_hash(password)
+    hashedP = hashlib.sha512(password.encode('utf-8')).hexdigest()[:64]
     print('Creating user')
-    new_user = User(fname,lname,email,hashedP,dob,bGender)
-    
-#    session=create_session()
-#    session.add(new_user)
-#    session.commit()
+    new_account = Account(fname,lname,email,hashedP,dob,bGender)
+    print('Created user')
+    db_session.add(new_account)
+    db_session.commit()
     
     print('About to flash')
     app.flash('You have successfully registered!')
@@ -99,9 +97,9 @@ def register():
     
 @app.route('/logout')
 def logout():
-    if 'username' in session:
-        session.pop('username')
+    if 'user' in session:
+        session.pop('user')
     return redirect(url_for('frontpage'))
     
 if __name__=="__main__":
-    app.run()
+    app.run(host='localhost',port=8080,debug=True)
