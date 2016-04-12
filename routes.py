@@ -14,9 +14,9 @@ db = create_engine(app.config['DATABASE_URI'])
 
 @app.route('/')
 def root_page():
-#    if(user.is_authenticated):
-#        return redirect(url_for('home'))
-#    else:
+    if 'user' in session:
+        return redirect(url_for('home'))
+    else:
     return redirect(url_for('frontpage'))
     
 @app.route('/frontpage')
