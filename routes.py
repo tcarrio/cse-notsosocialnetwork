@@ -1,5 +1,6 @@
 from flask import Flask,render_template,redirect,url_for,request
-from flask_login import LoginManager
+#from flask_login import LoginManager
+import flask.ext.login as flask_login
 from model.user import User
 from model.security import Hasher
 from model.datetool import DateHelper
@@ -8,7 +9,7 @@ from sqlalchemy import *
 
 app = Flask(__name__, static_url_path='/static')
 app.config.from_object('config.env_config.DevelopmentConfig')
-lm = LoginManager()
+lm = flask_login.LoginManager()
 lm.init_app(app)
 
 db = create_engine(app.config['DATABASE_URI'])
