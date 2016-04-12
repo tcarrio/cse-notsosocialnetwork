@@ -3,7 +3,6 @@ from sqlalchemy.orm import scoped_session, sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, Sequence, String, DateTime, Boolean
 from config.env_config import ProductionConfig as Conf
-#from model.database import Base
 
 engine = create_engine(Conf.DATABASE_URI, convert_unicode=True)
 db_session = scoped_session(sessionmaker(autocommit=False,
