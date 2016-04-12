@@ -119,7 +119,7 @@ def search():
     return
 
 ### POST
-@app.route('/post',methods=['POST'])
+@app.route('/post')
 def post():
     if 'user' not in session:
         pass
