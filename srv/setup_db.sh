@@ -12,6 +12,7 @@ setupDB(){
         exit 1
     else
         local MYSQL="$MYSQL_PATH"
+    fi
 
     echo "Executing database setup script\n"
     $MYSQL -u $DBUSER "-p$DBPASS" -e "CREATE DATABASE IF NOT EXISTS $DBNAME"
