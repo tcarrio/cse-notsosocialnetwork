@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker, relationship
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, Sequence, String, DateTime, Boolean
+from sqlalchemy import Column, Integer, Sequence, String, DateTime, Boolean, ForeignKey
 from config.env_config import ProductionConfig as Conf
 
 engine = create_engine(Conf.DATABASE_URI, convert_unicode=True)
@@ -58,7 +58,7 @@ class Profile(Base):
     profile_id = Column(Integer,primary_key=True)
     profile_uri = Column(String(255))
     profile_about = Column(String(1023))
-    account_email = Column(String(255))
+    account_email = Column(String(255),ForeignKey('accounts.account_email'))
     
     def __init__(self,id=None,uri=None,about=None,email=None):
         self.profile_id = id;
@@ -80,7 +80,7 @@ class Post(Base):
     __tablename__ = 'posts'
     post_id = Column(Integer,primary_key=True)
     post_uri = Column(String(255))
-    account_email = Column(String(255))
+    account_email = Column(String(255),ForeignKey('accounts.account_email'))
     receiver_email = Column(String(255))
     post_date = Column(DateTime)
     post_content = Column(String(4096))
@@ -109,7 +109,7 @@ class Message(Base):
     __tablename__ = 'messages'
     message_id = Column(Integer,primary_key=True)
     message_uri = Column(String(255))
-    account_email = Column(String(255))
+    account_email = Column(String(255),ForeignKey('accounts.account_email'))
     receiver_email = Column(String(255))
     message_date = Column(DateTime)
     message_title = Column(String(255))
