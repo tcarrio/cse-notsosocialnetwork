@@ -19,6 +19,8 @@ main(){
     fi
     
     apt-get update
+    debconf-set-selections <<< 'mysql-server mysql-server/root_password password nssntest'
+    debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password nssntest'
     apt-get install -y mysql-server git nginx python3-pip vim
     service nginx stop
 
