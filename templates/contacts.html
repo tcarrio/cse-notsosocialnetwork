@@ -22,7 +22,7 @@
   </head>
     
   <body>
-	{% if 'name' in session %}
+	{% if session.user %}
     <!--Copied nav bar code from index page-->
 	<nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
