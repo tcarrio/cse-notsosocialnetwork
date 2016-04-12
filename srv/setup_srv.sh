@@ -12,6 +12,12 @@ main(){
     local TESTING=1
     local MY_IP=$(dig +short myip.opendns.com @resolver1.opendns.com)
 
+
+    if [ -f rm /var/lib/dpkg/lock ]
+    then
+        rm rm /var/lib/dpkg/lock
+    fi
+    
     apt-get update
     apt-get install -y mysql-server git nginx python3-pip vim
     service nginx stop
