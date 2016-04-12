@@ -90,6 +90,11 @@ def register():
     session['user'] = email
     return redirect(url_for('frontpage'))
     
+@app.route('/search', methods=['GET'])
+def search():
+    print(request.args) #dict
+    return
+    
 @app.route('/logout')
 def logout():
     if 'user' in session:
