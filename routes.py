@@ -12,6 +12,8 @@ app.config.from_object('config.env_config.ProductionConfig')
 
 db = create_engine(app.config['DATABASE_URI'])
 
+
+### ROOT REQUEST
 @app.route('/',methods=['GET'])
 def root_page():
     if 'user' in session:
@@ -19,12 +21,14 @@ def root_page():
     else:
         return redirect(url_for('frontpage'))
     
+### FRONTPAGE
 @app.route('/frontpage',methods=['GET'])
 def frontpage():
     if 'user' in session:
         return redirect(url_for('home'))
     return render_template('index.html')
 
+### HOMEPAGE
 @app.route('/home',methods=['GET'])
 def home():
     if 'user' not in session:
@@ -32,26 +36,31 @@ def home():
     print('home was accessed')
     return render_template('home.html')
 
+### CONTACT
 @app.route('/contacts',methods=['GET'])
 def contacts():
     return render_template('contacts.html')
 
+### REGISTRATION
 @app.route('/registration',methods=['GET'])
 def registration():
     if 'user' in session:
         return redirect(url_for('home'))
     return render_template('register.html')
 
+### ABOUT US
 @app.route('/aboutus',methods=['GET'])
 def aboutus():
     return render_template('aboutus.html')
 
+### PROFILE
 @app.route('/profile', methods=['GET'])
 def profile():
     if 'user' not in session:
         return redirect(url_for('register'))
     return render_template('profile.html')
     
+### LOGIN 
 @app.route('/login', methods=['POST'])
 def login():
     if 'user' in session:
@@ -72,6 +81,7 @@ def login():
     
     return redirect(url_for('frontpage'))
     
+### REGISTER
 @app.route('/register', methods=['POST'])
 def register(): 
     if 'user' in session:
@@ -103,11 +113,13 @@ def register():
     session['user'] = email
     return redirect(url_for('frontpage'))
     
+### SEARCH
 @app.route('/search', methods=['GET'])
 def search():
     print(request.args) #dict
     return
     
+### LOGOUT
 @app.route('/logout')
 def logout():
     if 'user' in session:
