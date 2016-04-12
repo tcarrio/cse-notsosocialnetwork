@@ -31,7 +31,6 @@ def frontpage():
 def home():
     if 'user' not in session:
         return redirect(url_for('frontpage'))
-    print('home was accessed')
     return render_template('home.html')
 
 ### CONTACT
@@ -128,7 +127,6 @@ def post():
         stamp = datetime.datetime.now()
         uricomp = '{}{}{}'.format(str(stamp),content,session['user'])
         uri = hashlib.sha512(uricomp.encode('utf-8')).hexdigest()[:48]
-        new_post = Post(session['user'],)
         new_post = Post(uri=uri,pFrom=session['user'],pTo=session['user'],pDate=stamp,pContent=content)
         try:
             db_session.add(new_post)
