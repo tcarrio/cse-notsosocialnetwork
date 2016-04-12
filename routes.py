@@ -123,8 +123,8 @@ def search():
 def post():
     if 'user' not in session:
         pass
-    elif escape(request.args['Content']):
-        content = escape(request.args['content'])
+    elif escape(request.form['Content']):
+        content = escape(request.form['content'])
         stamp = datetime.datetime.now()
         uricomp = '{}{}{}'.format(str(stamp),content,session['user'])
         uri = hashlib.sha512(uricomp.encode('utf-8')).hexdigest()[:48]
