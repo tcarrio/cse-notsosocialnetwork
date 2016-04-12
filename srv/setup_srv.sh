@@ -20,9 +20,9 @@ main(){
     
     apt-get update
     apt-get install debconf-utils
-    echo "mysql-server-5.5 mysql-server/root_password password yourpassword" > ~/mysql.preseed
-    echo "mysql-server-5.5 mysql-server/root_password_again password yourpassword" >> ~/mysql.preseed
-    echo "mysql-server-5.5 mysql-server/start_on_boot boolean true" >> ~/mysql.preseed
+    echo "mysql-server mysql-server/root_password password yourpassword" > ~/mysql.preseed
+    echo "mysql-server mysql-server/root_password_again password yourpassword" >> ~/mysql.preseed
+    echo "mysql-server mysql-server/start_on_boot boolean true" >> ~/mysql.preseed
     cat ~/mysql.preseed | sudo debconf-set-selections
 #    debconf-set-selections <<< 'mysql-server mysql-server/root_password password nssntest'
 #    debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password nssntest'
