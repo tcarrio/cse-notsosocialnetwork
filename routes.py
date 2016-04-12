@@ -48,15 +48,14 @@ def profile():
 def login():
     email = request.form['Email']
     password = request.form['Password']
-    
-    session = create_session()
-    result = session.query(User).filter(User.user_email==email).first()
+
+    result = db_session.query(Account).filter(Account.account_email==email).first()
     if email and password:
         hash = hashlib.sha512(password.encode('utf-8')).hexdigest()[:64]
         
-        if result.user_email == email:
-            if result.user_password == hash:
-                session['user']=result.user_email
+        if result.account_email == email:
+            if result.account_password == hash:
+                session['user']=result.account_email
                 return redirect(url_for('home'))
         else:
             return redirect('/index.html')
@@ -88,8 +87,8 @@ def register():
     except IntegrityError:
         return redirect(url_for('registration'))
         
-    
-    return redirect(url_for('home'))
+    session['user'] = email
+    return redirect(url_for('frontpage'))
     
 @app.route('/logout')
 def logout():
@@ -98,4 +97,4 @@ def logout():
     return redirect(url_for('frontpage'))
     
 if __name__=="__main__":
-    app.run(host='104.131.109.224',port=8080,debug=True)
+    app.run(host='104.131.109.224',port=80,debug=True)

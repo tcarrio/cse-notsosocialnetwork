@@ -37,12 +37,12 @@ class Account(Base):
         return '<User {}>'.format(self.name)
         
     def validate(self):
-        return isinstance(self.user_first_name,str) and \
-            isinstance(self.user_last_name,str) and \
-            isinstance(self.user_email,str) and \
-            isinstance(self.user_password,str) and \
-            isinstance(self.user_dob,datetime) and \
-            isinstance(self.user_gender,boolean)
+        return isinstance(self.account_first_name,str) and \
+            isinstance(self.account_last_name,str) and \
+            isinstance(self.account_email,str) and \
+            isinstance(self.account_password,str) and \
+            isinstance(self.account_dob,datetime) and \
+            isinstance(self.account_gender,boolean)
 
 #SQL ORM Profile Class                
 class Profile(Base):
