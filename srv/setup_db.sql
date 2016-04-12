@@ -1,7 +1,7 @@
-drop table if exists accounts;
-drop table if exists profiles;
-drop table if exists posts;
 drop table if exists messages;
+drop table if exists posts;
+drop table if exists profiles;
+drop table if exists accounts;
 
 create table accounts (
     user_email varchar(255) not null,
