@@ -58,6 +58,7 @@ def aboutus():
 def profile():
     if 'user' not in session:
         return redirect(url_for('register'))
+    result = db_session.query(Account).filter(Account.account_email==session['user']).first()
     return render_template('profile.html')
     
 ### LOGIN 
