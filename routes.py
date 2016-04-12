@@ -102,4 +102,4 @@ def logout():
     return redirect(url_for('frontpage'))
     
 if __name__=="__main__":
-    app.run(host='localhost',port=8080,debug=True)
+    app.run(host='104.131.109.224',port=8080,debug=True)
