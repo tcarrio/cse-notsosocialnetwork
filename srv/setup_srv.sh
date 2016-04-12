@@ -20,6 +20,7 @@ main(){
     fi
     
     if [ ! -f /www ]
+    then
         ln -s /opt/$REPO_NAME /www
     fi
 
@@ -27,7 +28,7 @@ main(){
     #$PIP install virtualenv
     #virtualenv --no-site-packages venv
     #source venv/bin/activate
-    $PIP install flask flask-login sqlalchemy
+    $PIP install flask flask-login sqlalchemy pymysql
 
     #SETUP DATABASE
     /www/srv/setup_db.sh

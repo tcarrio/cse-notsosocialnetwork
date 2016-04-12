@@ -7,8 +7,6 @@ from sqlalchemy import *
 
 app = Flask(__name__, static_url_path='/static')
 app.config.from_object('config.env_config.ProductionConfig')
-login_manager = flask_login.LoginManager()
-login_manager.init_app(app)
 
 db = create_engine(app.config['DATABASE_URI'])
 
@@ -101,7 +99,9 @@ def register():
     
 @app.route('/logout')
 def logout():
-    if
+    if 'username' in session:
+        session.pop('username')
+    return redirect(url_for('frontpage'))
     
 if __name__=="__main__":
     app.run()
