@@ -1,18 +1,17 @@
 drop table if exists messages;
 drop table if exists posts;
-drop table if exists profiles;
 drop table if exists accounts;
 
 create table accounts (
-    email varchar(255) not null,
+    uri int not null auto_increment,
+    email varchar(255) not null unique,
     first_name varchar(255) not null,
     last_name varchar(255) not null,
     password char(64) not null,
     dob timestamp not null,
     gender boolean not null,
     about varchar(1023),
-    uri varchar(64) not null,
-    primary key (email)
+    primary key (uri)
 );
 
 create table posts (
