@@ -10,6 +10,10 @@ app.config.from_object('config.env_config.ProductionConfig')
 
 db = create_engine(app.config['DATABASE_URI'])
 
+#Testing Search
+search('Wesley')
+search('Jimmy')
+
 
 ### ROOT REQUEST
 @app.route('/',methods=['GET'])
