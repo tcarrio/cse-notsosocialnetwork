@@ -1,6 +1,6 @@
 from flask import Flask,render_template,redirect,url_for,request,session,escape
 from model.database import Account,Profile,Post,Message,db_session
-from model.profile import get_post
+from model.profile import get_profile
 from sqlalchemy import *
 from sqlalchemy.exc import *
 import datetime, hashlib
