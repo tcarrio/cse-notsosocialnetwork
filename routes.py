@@ -125,6 +125,7 @@ def search():
 def logout():
     if 'user' in session:
         session.pop('user')
+    if 'name' in session:
         session.pop('name')
     return redirect(url_for('frontpage'))
 
