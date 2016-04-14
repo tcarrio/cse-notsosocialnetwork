@@ -2,7 +2,7 @@ import requests
 from config.env_config import ProductionConfig as conf
 
 def get_status_codes():
-    base_url = 'http://{}:{}/'.format('127.0.0.1','8080')
+    base_url = '{}:{}/'.format('127.0.0.1','8080')
     test_urls = [
         '',
         'frontpage',
