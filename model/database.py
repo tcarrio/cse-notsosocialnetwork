@@ -4,6 +4,9 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, Sequence, String, DateTime, Boolean
 from config.env_config import ProductionConfig as Conf
 
+#Search
+from sqlalchemy_fulltext import FullText, FullTextSearch
+
 engine = create_engine(Conf.DATABASE_URI, convert_unicode=True)
 db_session = scoped_session(sessionmaker(autocommit=False,
                                          autoflush=False,
@@ -129,6 +132,10 @@ class Message(Base):
             
             
             
+#Search
+class UserSearch(FullText, Base):
+    __fulltext_columns__ = ('account_first_name', 'account_last_name')
+
 def init_db():
     # import all modules here that might define models so that
     # they will be registered properly on the metadata.  Otherwise
