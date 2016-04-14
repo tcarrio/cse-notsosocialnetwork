@@ -103,7 +103,11 @@
                                   <img src="/static/img/avatars/default.jpg" alt="" class="left-block img-rounded img-thumbnail img-responsive">
                               </div>
                               <div class="col-xs-12 col-sm-6">
+                                  {% if session.name %}
+                                  <h2>{{ session.name }}</h2>
+                                  {% else %}
                                   <h2>User Name</h2>
+                                  {% endif %}
                               </div>
                           </div>
                       </div>

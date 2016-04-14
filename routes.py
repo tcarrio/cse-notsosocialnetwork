@@ -74,6 +74,7 @@ def login():
         if result.account_email == email:
             if result.account_password == hash:
                 session['user']=result.account_email
+                session['name'] = '{} {}'.format(result.account_first_name,result.account_last_name)
                 return redirect(url_for('home'))
         else:
             return redirect('/index.html')
@@ -110,6 +111,7 @@ def register():
         return redirect(url_for('registration'))
         
     session['user'] = email
+    session['name'] = '{} {}'.format(fname,lname)
     return redirect(url_for('frontpage'))
     
 ### SEARCH
@@ -123,7 +125,26 @@ def search():
 def logout():
     if 'user' in session:
         session.pop('user')
+        session.pop('name')
     return redirect(url_for('frontpage'))
+
+### MESSAGE
+@app.route('/message')
+def message():
+    if 'user' not in session:
+        return redirect(url_for('frontpage'))
+    return render_template('inbox.html')
+
+@app.route('/editprofile',methods=['POST','GET'])
+def editprofile():
+    if 'user' not in session:
+        return redirect(url_for('frontpage'))
+    if request.method=='GET':
+        ## edit profile
+        return render_template('editprofile.html')
+    else:
+        ## submit profile changes
+        pass
     
 if __name__=="__main__":
     print("IP:{}\nPort:{}".format(app.config['EXT_IP'],app.config['EXT_PORT']))

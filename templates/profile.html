@@ -96,7 +96,11 @@
                                   <div class="row"><a href="/editprofile"><p class="btn btn-default">Edit profile</p></a></div>
                               </div>
                               <div class="col-xs-12 col-sm-6">
+                                  {% if session.name %}
+                                  <h2>{{ session.name }}</h2>
+                                  {% else %}
                                   <h2>User Name</h2>
+                                  {% endif %}
                               </div>
                           </div>
                       </div>
