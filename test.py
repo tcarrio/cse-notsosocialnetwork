@@ -28,6 +28,8 @@ def get_status_codes():
 
 
 def main():
+    for ind,val in enumerate(test_urls):
+        print("{}\tstatus:{}".format(test_urls[ind],str(status_codes[ind])))
     return (200 in get_status_codes())
 
 if __name__=="__main__":
