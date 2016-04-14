@@ -1,0 +1,17 @@
+language: python
+python:
+  - "2.6"
+  - "2.7"
+  - "3.2"
+  - "3.3"
+  - "3.4"
+  - "3.5"
+  - "3.5-dev" # 3.5 development branch
+  - "nightly" # currently points to 3.6-dev
+
+install:
+    - pip install -r requirements.txt
+    - git clone https://github.com/mengzhuo/sqlalchemy-fulltext-search.git packages/sqlalchemy-fulltext-search
+    - python packages/sqlalchemy-fulltext-search/setup.py install
+
+script: routes.py
