@@ -1,4 +1,5 @@
-from model.database import db_session, Profile, Account
+from model.orm import Profile, Account
+from model.database import db_session
 
 
 def get_profile(session):

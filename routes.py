@@ -1,5 +1,6 @@
 from flask import Flask,render_template,redirect,url_for,request,session,escape
-from model.database import Account,Profile,Post,Message,db_session
+from model.orm import Account,Profile,Post,Message
+from model.database import db_session, get_new_session
 from model.profile import get_profile
 from sqlalchemy import *
 from sqlalchemy.exc import *
