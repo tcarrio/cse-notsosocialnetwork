@@ -19,8 +19,11 @@ def get_status_codes():
     status_codes = []
 
     for uri in test_urls:
-        r = requests.get('{}{}'.format(base_url,uri))
-        status_codes.append(r.status_code)
+        try:
+            r = requests.get('{}{}'.format(base_url,uri))
+            status_codes.append(r.status_code)
+        except:
+            status_codes.append(500)
     return status_codes
 
 
