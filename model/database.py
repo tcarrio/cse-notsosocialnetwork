@@ -15,7 +15,7 @@ Base = declarative_base()
 Base.query = db_session.query_property()
 
 #SQL ORM Account Class
-class Account(Base):
+class Account(FullText, Base):
     __tablename__ = 'accounts'
     #account_id = Column(Integer,primary_key=True)
     account_first_name = Column(String(255))
@@ -24,6 +24,9 @@ class Account(Base):
     account_password = Column(String(64))
     account_dob = Column(DateTime)
     account_gender = Column(Boolean)
+    
+    #Search
+    __fulltext_columns__ = ('account_first_name', 'account_last_name')
     
     def __init__(self,fname=None,lname=None,email=None,password=None,\
                  dob=None,gender=None):
@@ -131,11 +134,12 @@ class Message(Base):
             isinstance(self.message_content,str)
             
             
-            
+"""            
 #Search
 class Foo(FullText, Base):
     __fulltext_columns__ = ('account_first_name', 'account_last_name')
-
+""""
+    
 def init_db():
     # import all modules here that might define models so that
     # they will be registered properly on the metadata.  Otherwise
