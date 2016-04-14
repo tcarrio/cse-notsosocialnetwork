@@ -22,5 +22,4 @@ for uri in test_urls:
     
 
 # loose testing
-if 200 in status_codes:
-    return 1
+return (200 in status_codes)
