@@ -129,5 +129,4 @@ if __name__=="__main__":
     app.run(host=app.config['EXT_IP'],port=80,debug=True)
 
     
-app = create_flask_app()
 response = app.test_client().get('/search')
