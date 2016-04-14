@@ -115,7 +115,7 @@ def register():
 ### SEARCH
 @app.route('/search', methods=['GET'])
 def search(keyword):
-    print(session.query(Account).filter(FullTextSearch(keyword, Account)))
+    print(session.query(Account).filter(FullTextSearch('Wesley', Account)))
     return
 
 ### LOGOUT
@@ -129,6 +129,5 @@ if __name__=="__main__":
     app.run(host=app.config['EXT_IP'],port=80,debug=True)
 
     
-#Testing Search
-search('Wesley')
-search('Jimmy')
+app = create_flask_app()
+response = app.test_client().get('/search')
