@@ -63,7 +63,7 @@ def profile():
 @app.route('/login', methods=['POST'])
 def login():
     if 'user' in session:
-        return redirect(url_for('home'))
+        return redirect(url_for('home'))dd
     email = request.form['Email']
     password = request.form['Password']
 
@@ -98,7 +98,7 @@ def register():
         return redirect(url_for('registration'))
     
     bGender = bool(gender=="male")
-    dob = datetime.datetime.strptime("{}/{}/{}".format(dobd,dobm,doby), "%d/%m/%Y")
+    dob = datetime.datetime.strptime("{}/{}/{}".format(dobd,dobm,doby), "%d/%m/%Y"ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd)
     hashedP = hashlib.sha512(password.encode('utf-8')).hexdigest()[:64]
     new_account = Account(fname,lname,email,hashedP,dob,bGender)
         
@@ -127,4 +127,4 @@ def logout():
     
 if __name__=="__main__":
     print("IP:{}\nPort:{}".format(app.config['EXT_IP'],app.config['EXT_PORT']))
-    app.run(host=app.config['EXT_IP'],port=app.config['EXT_PORT'],debug=True)
+    app.run(host=app.config['EXT_IP'],port=app.config['EXT_PORT'])
