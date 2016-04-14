@@ -7,7 +7,11 @@ python:
 
 install:
     - pip install -r requirements.txt
-    - git clone https://github.com/mengzhuo/sqlalchemy-fulltext-search.git site-packages/sqlalchemy-fulltext
-    - python site-packages/sqlalchemy-fulltext/setup.py install
+    - mkdir packages
+    - cd packages 
+    - git clone https://github.com/mengzhuo/sqlalchemy-fulltext-search.git sqlfts 
+    - cd sqlfts
+    - python setup.py install
+    - cd ~
 
 script: routes.py
