@@ -77,6 +77,7 @@ def login():
         if result.account_email == email:
             if result.account_password == hash:
                 session['user']=result.account_email
+                session['name']="{} {}".format(result.account_first_name,result.account_last_name)
                 return redirect(url_for('home'))
         else:
             return redirect('/index.html')
@@ -126,7 +127,8 @@ def search():
 def logout():
     if 'user' in session:
         session.pop('user')
+        session.pop('name')
     return redirect(url_for('frontpage'))
     
 if __name__=="__main__":
-    app.run(host=app.config['EXT_IP'],port=8080,debug=True)
+    app.run(host=app.config['EXT_IP'],port=app.config['EXT_PORT'])
