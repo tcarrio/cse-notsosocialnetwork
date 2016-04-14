@@ -2,7 +2,7 @@ import requests
 import config.env_config as Conf
 
 def get_status_codes():
-    base_url = 'http://{}:{}/'.format(Conf.ProductionConfig['EXT_IP'],Conf.ProductionConfig['EXT_PORT'])
+    base_url = 'http://{}:{}/'.format(Conf.ProductionConfig['EXT_IP'],str(Conf.ProductionConfig['EXT_PORT']))
     test_urls = [
         '',
         'frontpage',
