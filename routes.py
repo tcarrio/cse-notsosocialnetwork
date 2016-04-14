@@ -114,7 +114,7 @@ def register():
     
 ### SEARCH
 @app.route('/search', methods=['GET'])
-def search(keyword):
+def search():
     print(session.query(Account).filter(FullTextSearch('Wesley', Account)))
     return
 
