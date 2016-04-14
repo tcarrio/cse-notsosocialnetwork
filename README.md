@@ -1,5 +1,5 @@
 # cse-notsosocialnetwork
-Project for CSE-337
+The Not-So-Social Status [![Build Status](https://travis-ci.org/tcarrio/cse-notsosocialnetwork.svg?branch=master)](https://travis-ci.org/tcarrio/cse-notsosocialnetwork)
 
 # Build script
 On a Debian/Ubuntu-based server, call the following:
