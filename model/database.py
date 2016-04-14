@@ -5,9 +5,15 @@ from sqlalchemy import Column, Integer, Sequence, String, DateTime, Boolean, For
 from config.env_config import ProductionConfig as Conf
 
 engine = create_engine(Conf.DATABASE_URI, convert_unicode=True)
-db_session = scoped_session(sessionmaker(autocommit=False,
+
+
+def get_new_session():
+    return scoped_session(sessionmaker(autocommit=False,
                                          autoflush=False,
                                          bind=engine))
+
+db_session = get_new_session()
+
 Base = declarative_base()
 Base.query = db_session.query_property()
 
@@ -22,11 +28,9 @@ class Account(Base):
     account_dob = Column(DateTime)
     account_gender = Column(Boolean)
     
-    profile_email_rel = relationship("Profile",back_populates="parent")
-    post_email_rel = relationship("Post",back_populates="parent")
-    post_rec_rel = relationship("Post",back_populates="parent")
-    message_email_rel = relationship("Message",back_populates="parent")
-    message_rec_rel = relationship("Message",back_populates="parent")
+    profile_rel = relationship("Profile",back_populates="parent")
+    post_rel = relationship("Post",back_populates="parent")
+    message_rel = relationship("Message",back_populates="parent")
     
     def __init__(self,fname=None,lname=None,email=None,password=None,\
                  dob=None,gender=None):
@@ -49,7 +53,7 @@ class Profile(Base):
     profile_about = Column(String(1023))
     account_email = Column(String(255),ForeignKey('accounts.account_email'))
     
-    account_email_rel = relationship("Profile",back_populates="child")
+    account_rel = relationship("Profile",back_populates="child")
     
     def __init__(self,id=None,uri=None,about=None,email=None):
         self.profile_id = id;
@@ -70,8 +74,7 @@ class Post(Base):
     post_date = Column(DateTime)
     post_content = Column(String(4096))
     
-    account_email_rel = relationship("Post",back_populates="child")
-    receiver_email_rel = relationship("Post",back_populates="child")
+    account_rel = relationship("Post",back_populates="child")
     
     def __init__(self,id=None,uri=None,pFrom=None,pTo=None,pDate=None,pContent=None):
         self.post_id = id
@@ -95,8 +98,7 @@ class Message(Base):
     message_title = Column(String(255))
     message_content = Column(String(4096))
     
-    account_email_rel = relationship("Message",back_populates="child")
-    receiver_email_rel = relationship("Message",back_populates="child")
+    account_rel = relationship("Message",back_populates="child")
     
     def __init__(self,mId=None,uri=None,mFrom=None,mTo=None,mDate=None,title=None,mContent=None):
         self.message_id = mId

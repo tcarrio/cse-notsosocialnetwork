@@ -1,5 +1,6 @@
 from flask import Flask,render_template,redirect,url_for,request,session,escape
 from model.database import Account,Profile,Post,Message,db_session
+from model.profile import get_post
 from sqlalchemy import *
 from sqlalchemy.exc import *
 import datetime, hashlib
@@ -56,8 +57,9 @@ def aboutus():
 def profile():
     if 'user' not in session:
         return redirect(url_for('register'))
-    result = db_session.query(Account).filter(Account.account_email==session['user']).first()
-    return render_template('profile.html')
+    result = get_profile(session)
+    #result = db_session.query(Account).filter(Account.account_email==session['user']).first()
+    return render_template('profile.html',profile=result)
     
 ### LOGIN 
 @app.route('/login', methods=['POST'])
