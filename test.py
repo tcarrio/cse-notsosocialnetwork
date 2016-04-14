@@ -1,8 +1,8 @@
 import requests
-import config.env_config as Conf
+from config.env_config import ProductionConfig as conf
 
 def get_status_codes():
-    base_url = 'http://{}:{}/'.format(Conf.ProductionConfig['EXT_IP'],str(Conf.ProductionConfig['EXT_PORT']))
+    base_url = 'http://{}:{}/'.format('127.0.0.1','8080')
     test_urls = [
         '',
         'frontpage',
