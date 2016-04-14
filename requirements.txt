@@ -4,4 +4,5 @@ PyMySQL==0.7.2
 itsdangerous>=0.21
 Werkzeug>=0.7
 Jinja2>=2.4
-MarkupSafe 
+MarkupSafe>=0.23
+requests>=2.9.1
