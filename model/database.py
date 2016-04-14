@@ -133,7 +133,7 @@ class Message(Base):
             
             
 #Search
-class UserSearch(FullText, Base):
+class Foo(FullText, Base):
     __fulltext_columns__ = ('account_first_name', 'account_last_name')
 
 def init_db():

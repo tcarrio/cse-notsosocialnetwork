@@ -1,5 +1,5 @@
 from flask import Flask,render_template,redirect,url_for,request,session,escape
-from model.database import Account,Profile,Post,Message,db_session,UserSearch
+from model.database import Account,Profile,Post,Message,db_session,Foo
 from sqlalchemy import *
 from sqlalchemy.exc import *
 import datetime, hashlib
@@ -119,7 +119,7 @@ def register():
 ### SEARCH
 @app.route('/search', methods=['GET'])
 def search(keyword):
-    print(session.query(UserSearch).filter(FullTextSearch(keyword ,UserSearch))) #dict
+    print(session.query(Foo).filter(FullTextSearch(keyword ,Foo))) #dict
     return
 
 ### LOGOUT
